@@ -1,1 +1,63 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scholarship Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🎓 Scholarship & UPU Tracker</h1>
+
+<div id="home">
+  <button onclick="showPage('results')">Update Results</button>
+  <button onclick="showPage('scholarships')">Scholarships</button>
+  <button onclick="showPage('upu')">UPU</button>
+</div>
+
+<!-- RESULTS -->
+<div id="results" class="page hidden">
+  <h2>Update Results</h2>
+  <form id="resultForm"></form>
+
+  <input type="number" id="coco" placeholder="Cocurriculum Points">
+  <input type="number" id="merit" placeholder="Merit Points">
+
+  <button onclick="saveResults()">Save</button>
+  <button onclick="goHome()">Back</button>
+</div>
+
+<!-- SCHOLARSHIPS -->
+<div id="scholarships" class="page hidden">
+  <h2>Scholarships</h2>
+
+  <div class="card">
+    <input id="sName" placeholder="Scholarship Name">
+    <input id="sDeadline" type="date">
+    <input id="sMinAs" type="number" placeholder="Min A's">
+    <input id="sMerit" type="number" placeholder="Min Merit">
+    <button onclick="addScholarship()">Add</button>
+  </div>
+
+  <div id="scholarshipList"></div>
+  <button onclick="goHome()">Back</button>
+</div>
+
+<!-- UPU -->
+<div id="upu" class="page hidden">
+  <h2>UPU</h2>
+
+  <div class="card">
+    <input id="uName" placeholder="Course Name">
+    <input id="uMinAs" type="number" placeholder="Min A's">
+    <input id="uMerit" type="number" placeholder="Min Merit">
+    <button onclick="addUPU()">Add</button>
+  </div>
+
+  <div id="upuList"></div>
+  <button onclick="goHome()">Back</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
