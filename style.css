@@ -1,1 +1,56 @@
-h
+body {
+  font-family: Arial;
+  text-align: center;
+  background: #f4f6f9;
+}
+
+h1 {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 10px;
+  border: none;
+  background: #333;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #555;
+}
+
+input, select {
+  display: block;
+  margin: 8px auto;
+  padding: 8px;
+  width: 200px;
+}
+
+.page {
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  margin: 15px auto;
+  width: 260px;
+  border-radius: 10px;
+}
+
+.eligible {
+  color: green;
+  font-weight: bold;
+}
+
+.not-eligible {
+  color: red;
+  font-weight: bold;
+}
