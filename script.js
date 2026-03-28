@@ -70,6 +70,189 @@ function check(student,req){
   return true;
 }
 
+// ===== CREATE ROW =====
+function createRow(container){
+  let div=document.createElement("div");
+  div.className="subRow";
+
+  div.innerHTML=`
+    <select class="subName">
+      <option value="">Select Subject</option>
+      ${subjects.map(s=>`<option>${s}</option>`).join("")}
+    </select>
+
+    <select class="subGrade">
+      ${grades.map(g=>`<option>${g}</option>`).join("")}
+    </select>
+  `;
+
+  div.querySelector(".subName").addEventListener("change",()=>{
+    if(div===container.lastChild){
+      createRow(container);
+    }
+  });
+
+  container.appendChild(div);
+}
+
+// ===== SCHOLARSHIPS =====
+let docs=[];
+
+function toggleMin(){ minBox.classList.toggle("hidden"); }
+function toggleSub(){
+  subBox.classList.toggle("hidden");
+  if(!subBox.innerHTML) createRow(subBox);
+}
+
+function addDoc(){
+  docs.push(docInput.value);
+  docInput.value="";
+  renderDocs();
+}
+
+function renderDocs(){
+  docList.innerHTML="";
+  docs.forEach(d=>{
+    let li=document.createElement("li");
+    li.innerText=d;
+    docList.appendChild(li);
+  });
+}
+
+function addScholarship(){
+  let data=JSON.parse(localStorage.getItem("scholarships"))||[];
+  let req={};
+
+  if(!minBox.classList.contains("hidden")){
+    req.min={count:Number(minCount.value),grade:minGrade.value};
+  }
+
+  if(!subBox.classList.contains("hidden")){
+    let rows=document.querySelectorAll("#subBox .subRow");
+    let sub=[];
+    rows.forEach(r=>{
+      let name=r.querySelector(".subName").value;
+      let grade=r.querySelector(".subGrade").value;
+      if(name) sub.push({name,grade});
+    });
+    if(sub.length) req.sub=sub;
+  }
+
+  data.push({name:sName.value,req,docs:[...docs]});
+  localStorage.setItem("scholarships",JSON.stringify(data));
+
+  docs=[]; renderDocs(); subBox.innerHTML="";
+  renderScholarships();
+}
+
+function renderScholarships(){
+  scholarshipList.innerHTML="";
+  let data=JSON.parse(localStorage.getItem("scholarships"))||[];
+  let student=JSON.parse(localStorage.getItem("results"));
+
+  data.forEach(s=>{
+    let ok=check(student,s.req);
+    let div=document.createElement("div");
+    div.className="card";
+
+    div.innerHTML=`
+      <h3>${s.name}</h3>
+      <p class="${ok?"eligible":"not-eligible"}">${ok?"✅ Eligible":"❌ Not Eligible"}</p>
+      <p>Docs: ${s.docs.join(", ")}</p>
+    `;
+
+    scholarshipList.appendChild(div);
+  });
+}
+
+// ===== UPU =====
+function toggleMinUPU(){ minBoxUPU.classList.toggle("hidden"); }
+
+function toggleSubUPU(){
+  subBoxUPU.classList.toggle("hidden");
+  if(!subBoxUPU.innerHTML) createRow(subBoxUPU);
+}
+
+function addUPU(){
+  let data=JSON.parse(localStorage.getItem("upu"))||[];
+  let req={};
+
+  if(!minBoxUPU.classList.contains("hidden")){
+    req.min={count:Number(minCountUPU.value),grade:minGradeUPU.value};
+  }
+
+  if(!subBoxUPU.classList.contains("hidden")){
+    let rows=document.querySelectorAll("#subBoxUPU .subRow");
+    let sub=[];
+    rows.forEach(r=>{
+      let name=r.querySelector(".subName").value;
+      let grade=r.querySelector(".subGrade").value;
+      if(name) sub.push({name,grade});
+    });
+    if(sub.length) req.sub=sub;
+  }
+
+  data.push({name:uName.value,uni:uUni.value,req});
+  localStorage.setItem("upu",JSON.stringify(data));
+
+  subBoxUPU.innerHTML="";
+  renderUPU();
+}
+
+function renderUPU(){
+  upuList.innerHTML="";
+  let data=JSON.parse(localStorage.getItem("upu"))||[];
+  let student=JSON.parse(localStorage.getItem("results"));
+
+  data.forEach(u=>{
+    let ok=check(student,u.req);
+    let div=document.createElement("div");
+    div.className="card";
+
+    div.innerHTML=`
+      <h3>${u.name}</h3>
+      <p>${u.uni}</p>
+      <p class="${ok?"eligible":"not-eligible"}">${ok?"✅ Eligible":"❌ Not Eligible"}</p>
+    `;
+
+    upuList.appendChild(div);
+  });
+}}
+
+// ===== SAVE RESULT =====
+function saveResults(){
+  let data={};
+  subjects.forEach(s=>data[s]=document.getElementById(s).value);
+  data.coco=Number(coco.value);
+  localStorage.setItem("results",JSON.stringify(data));
+  alert("Saved!");
+}
+
+// ===== HELPERS =====
+function gradeValue(g){ return grades.indexOf(g); }
+
+function check(student,req){
+  if(!student) return false;
+
+  if(req.min){
+    let count = Object.values(student)
+      .filter(g=>grades.includes(g))
+      .filter(g=>gradeValue(g)<=gradeValue(req.min.grade)).length;
+
+    if(count < req.min.count) return false;
+  }
+
+  if(req.sub){
+    for(let s of req.sub){
+      if(gradeValue(student[s.name]) > gradeValue(s.grade)){
+        return false;
+      }
+    }
+  }
+
+  return true;
+}
+
 // ===== SUBJECT ROW GENERATOR =====
 function createRow(container, prefix){
   let div=document.createElement("div");
