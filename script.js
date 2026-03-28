@@ -73,6 +73,7 @@ function check(student,req){
 // ===== SUBJECT ROW GENERATOR =====
 function createRow(container, prefix){
   let div=document.createElement("div");
+  div.className = "subRow";
 
   div.innerHTML=`
     <select class="subName">
