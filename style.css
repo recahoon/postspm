@@ -1,40 +1,31 @@
-.home {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-}
-
-.home button {
-  width: 250px;
-  margin: 0 auto;
-  font-size: 16px;
-}
-
 body {
   font-family: Arial;
-  background: #f5f7fb;
-  margin: 0;
   text-align: center;
 }
 
 .hidden { display: none; }
 
-.page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.card {
+  background: #eee;
+  padding: 15px;
+  margin: 15px auto;
+  width: 280px;
 }
 
-.card {
-  background: white;
-  padding: 25px;
-  margin: 20px auto;
-  width: 420px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.circle {
+  border-radius: 50px;
+  padding: 8px 15px;
+  margin: 5px;
 }
+
+.flexRow {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.eligible { color: green; }
+.not-eligible { color: red; }}
 
 input, select {
   width: 100%;
