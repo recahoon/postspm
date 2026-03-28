@@ -3,7 +3,13 @@ body {
   text-align: center;
 }
 
-.hidden { display: none; }
+.hidden {
+  display: none !important;
+}
+
+.page {
+  margin-top: 20px;
+}
 
 .card {
   background: #eee;
@@ -25,120 +31,4 @@ body {
 }
 
 .eligible { color: green; }
-.not-eligible { color: red; }}
-
-input, select {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-button {
-  padding: 10px 15px;
-  margin: 8px 5px;
-  border: none;
-  background: #333;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-button:hover { background: #555; }
-
-.circle {
-  border-radius: 50px;
-  background: #e0e0e0;
-  color: black;
-}
-
-.flex {
-  display: flex;
-  gap: 10px;
-}
-
-.subRow {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.subRow select {
-  flex: 1;
-}
-
-.eligible { color: green; }
-.not-eligible { color: red; }  padding: 10px;
-  margin: 8px 0;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-/* BUTTONS */
-button {
-  padding: 10px 15px;
-  margin: 8px 5px;
-  border: none;
-  background: #333;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #555;
-}
-
-/* ROUND BUTTONS */
-.circle {
-  border-radius: 50px;
-  padding: 8px 18px;
-  background: #e0e0e0;
-  color: black;
-}
-
-/* FLEX ROW (for Minimum section) */
-.flex {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.flex input {
-  flex: 1;
-}
-
-.flex select {
-  flex: 1;
-}
-
-/* SUBJECT ROW */
-.subRow {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.subRow select {
-  flex: 1;
-}
-
-/* RESULT LIST CARDS */
-#upuList .card,
-#scholarshipList .card {
-  width: 420px;
-  text-align: left;
-}
-
-/* STATUS COLORS */
-.eligible {
-  color: green;
-  font-weight: bold;
-}
-
-.not-eligible {
-  color: red;
-  font-weight: bold;
-}
+.not-eligible { color: red; }
