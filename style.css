@@ -1,28 +1,109 @@
 body {
   font-family: Arial;
+  background: #f5f7fb;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
-.hidden { display: none; }
-
-.card {
-  background: #eee;
-  padding: 15px;
-  margin: 15px auto;
-  width: 300px;
+h1 {
+  margin: 20px 0;
 }
 
-.flex {
+.hidden {
+  display: none;
+}
+
+/* MAIN PAGE WRAPPER */
+.page {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* BIG FORM CARD */
+.card {
+  background: white;
+  padding: 25px;
+  margin: 20px auto;
+  width: 420px; /* bigger */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* INPUTS */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* BUTTONS */
+button {
+  padding: 10px 15px;
+  margin: 8px 5px;
+  border: none;
+  background: #333;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #555;
+}
+
+/* ROUND BUTTONS */
 .circle {
   border-radius: 50px;
-  padding: 8px 15px;
-  margin: 5px;
+  padding: 8px 18px;
+  background: #e0e0e0;
+  color: black;
 }
 
-.eligible { color: green; }
-.not-eligible { color: red; }
+/* FLEX ROW (for Minimum section) */
+.flex {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.flex input {
+  flex: 1;
+}
+
+.flex select {
+  flex: 1;
+}
+
+/* SUBJECT ROW */
+.subRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.subRow select {
+  flex: 1;
+}
+
+/* RESULT LIST CARDS */
+#upuList .card,
+#scholarshipList .card {
+  width: 420px;
+  text-align: left;
+}
+
+/* STATUS COLORS */
+.eligible {
+  color: green;
+  font-weight: bold;
+}
+
+.not-eligible {
+  color: red;
+  font-weight: bold;
+}
