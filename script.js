@@ -9,13 +9,15 @@ let results = JSON.parse(localStorage.getItem("results")) || {};
 let scholarships = JSON.parse(localStorage.getItem("scholarships")) || [];
 let upu = JSON.parse(localStorage.getItem("upu")) || [];
 
+/* PAGE NAV */
 function showPage(page) {
+  document.getElementById("home").style.display = "none";
   document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
   document.getElementById(page).classList.remove("hidden");
   renderAll();
 }
 
-/* ---------------- RESULTS ---------------- */
+/* INIT SUBJECTS */
 function initSubjects() {
   let container = document.getElementById("subjects");
   container.innerHTML = "";
@@ -31,11 +33,13 @@ function initSubjects() {
       select.appendChild(opt);
     });
 
-    container.innerHTML += `<label>${sub}</label>`;
+    container.innerHTML += `<label>${sub}</label><br>`;
     container.appendChild(select);
+    container.innerHTML += "<br>";
   });
 }
 
+/* SAVE RESULTS */
 function saveResults() {
   subjects.forEach(sub => {
     results[sub] = document.getElementById(sub).value;
@@ -48,7 +52,10 @@ function saveResults() {
   alert("Saved!");
 }
 
-/* ---------------- ADD FORM ---------------- */
+/* FORM */
+let useMin = false;
+let useSpec = false;
+
 function openScholarshipForm() {
   openForm("scholarship");
 }
@@ -96,10 +103,7 @@ function openForm(type) {
   renderSpecInputs();
 }
 
-/* ---------------- REQUIREMENTS ---------------- */
-let useMin = false;
-let useSpec = false;
-
+/* REQUIREMENTS */
 function toggleMin() {
   useMin = !useMin;
   document.getElementById("minBox").classList.toggle("hidden");
@@ -127,7 +131,7 @@ function renderSpecInputs() {
   });
 }
 
-/* ---------------- DOCUMENTS ---------------- */
+/* DOCUMENTS */
 function addDoc() {
   let docs = document.getElementById("docs");
   let input = document.createElement("input");
@@ -135,7 +139,7 @@ function addDoc() {
   docs.appendChild(input);
 }
 
-/* ---------------- SAVE ---------------- */
+/* SAVE ITEM */
 function saveItem(type) {
   let item = {
     name: document.getElementById("name").value,
@@ -152,7 +156,7 @@ function saveItem(type) {
 
   if(useMin){
     item.min = {
-      count: document.getElementById("minCount").value,
+      count: Number(document.getElementById("minCount").value),
       grade: document.getElementById("minGrade").value
     };
   }
@@ -165,7 +169,7 @@ function saveItem(type) {
   }
 
   document.querySelectorAll("#docs input").forEach(d=>{
-    item.docs.push(d.value);
+    if(d.value) item.docs.push(d.value);
   });
 
   if(type==="scholarship"){
@@ -180,14 +184,15 @@ function saveItem(type) {
   renderAll();
 }
 
+/* CLOSE */
 function closeForm() {
   document.getElementById("formModal").classList.add("hidden");
+  useMin = false;
+  useSpec = false;
 }
 
-/* ---------------- ELIGIBILITY ---------------- */
+/* ELIGIBILITY */
 function checkEligibility(item){
-  if(!results) return false;
-
   let pass = true;
 
   if(item.min){
@@ -205,7 +210,7 @@ function checkEligibility(item){
   return pass;
 }
 
-/* ---------------- RENDER ---------------- */
+/* RENDER */
 function renderAll(){
   renderList("scholarshipList", scholarships);
   renderList("upuList", upu);
