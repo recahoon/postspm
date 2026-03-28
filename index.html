@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Tracker</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -31,24 +30,19 @@
   <div class="card">
     <input id="sName" placeholder="Name">
 
-    <!-- Requirement Toggle -->
-    <button onclick="toggleMin()">Minimum</button>
-    <button onclick="toggleSub()">Specific Subjects</button>
-
-    <div id="minBox" class="hidden">
-      <input id="minCount" type="number" placeholder="Number">
+    <button class="circle" onclick="toggleMin()">Minimum</button>
+    <div id="minBox" class="hidden flex">
+      <input id="minCount" type="number" placeholder="No.">
       <select id="minGrade">
-        <option>A+</option>
-        <option>A</option>
-        <option>A-</option>
+        <option>A+</option><option>A</option><option>A-</option>
       </select>
     </div>
 
+    <button class="circle" onclick="toggleSub()">Specific Subjects</button>
     <div id="subBox" class="hidden"></div>
 
-    <!-- Documents -->
     <input id="docInput" placeholder="Add Document">
-    <button onclick="addDoc()">Add Doc</button>
+    <button onclick="addDoc()">Add</button>
     <ul id="docList"></ul>
 
     <button onclick="addScholarship()">Save</button>
@@ -66,18 +60,15 @@
     <input id="uName" placeholder="Course Name">
     <input id="uUni" placeholder="University">
 
-    <button onclick="toggleMinUPU()">Minimum</button>
-    <button onclick="toggleSubUPU()">Specific Subjects</button>
-
-    <div id="minBoxUPU" class="hidden">
-      <input id="minCountUPU" type="number">
+    <button class="circle" onclick="toggleMinUPU()">Minimum</button>
+    <div id="minBoxUPU" class="hidden flex">
+      <input id="minCountUPU" type="number" placeholder="No.">
       <select id="minGradeUPU">
-        <option>A+</option>
-        <option>A</option>
-        <option>A-</option>
+        <option>A+</option><option>A</option><option>A-</option>
       </select>
     </div>
 
+    <button class="circle" onclick="toggleSubUPU()">Specific Subjects</button>
     <div id="subBoxUPU" class="hidden"></div>
 
     <button onclick="addUPU()">Save</button>
