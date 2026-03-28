@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Scholarship Tracker</title>
+  <title>Tracker</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>🎓 Scholarship & UPU Tracker</h1>
+<h1>🎓 Tracker</h1>
 
 <div id="home">
   <button onclick="showPage('results')">Update Results</button>
@@ -17,12 +17,9 @@
 
 <!-- RESULTS -->
 <div id="results" class="page hidden">
-  <h2>Update Results</h2>
+  <h2>Results</h2>
   <form id="resultForm"></form>
-
-  <input type="number" id="coco" placeholder="Cocurriculum Points">
-  <input type="number" id="merit" placeholder="Merit Points">
-
+  <input type="number" id="coco" placeholder="Cocurriculum">
   <button onclick="saveResults()">Save</button>
   <button onclick="goHome()">Back</button>
 </div>
@@ -32,11 +29,29 @@
   <h2>Scholarships</h2>
 
   <div class="card">
-    <input id="sName" placeholder="Scholarship Name">
-    <input id="sDeadline" type="date">
-    <input id="sMinAs" type="number" placeholder="Min A's">
-    <input id="sMerit" type="number" placeholder="Min Merit">
-    <button onclick="addScholarship()">Add</button>
+    <input id="sName" placeholder="Name">
+
+    <!-- Requirement Toggle -->
+    <button onclick="toggleMin()">Minimum</button>
+    <button onclick="toggleSub()">Specific Subjects</button>
+
+    <div id="minBox" class="hidden">
+      <input id="minCount" type="number" placeholder="Number">
+      <select id="minGrade">
+        <option>A+</option>
+        <option>A</option>
+        <option>A-</option>
+      </select>
+    </div>
+
+    <div id="subBox" class="hidden"></div>
+
+    <!-- Documents -->
+    <input id="docInput" placeholder="Add Document">
+    <button onclick="addDoc()">Add Doc</button>
+    <ul id="docList"></ul>
+
+    <button onclick="addScholarship()">Save</button>
   </div>
 
   <div id="scholarshipList"></div>
@@ -49,9 +64,23 @@
 
   <div class="card">
     <input id="uName" placeholder="Course Name">
-    <input id="uMinAs" type="number" placeholder="Min A's">
-    <input id="uMerit" type="number" placeholder="Min Merit">
-    <button onclick="addUPU()">Add</button>
+    <input id="uUni" placeholder="University">
+
+    <button onclick="toggleMinUPU()">Minimum</button>
+    <button onclick="toggleSubUPU()">Specific Subjects</button>
+
+    <div id="minBoxUPU" class="hidden">
+      <input id="minCountUPU" type="number">
+      <select id="minGradeUPU">
+        <option>A+</option>
+        <option>A</option>
+        <option>A-</option>
+      </select>
+    </div>
+
+    <div id="subBoxUPU" class="hidden"></div>
+
+    <button onclick="addUPU()">Save</button>
   </div>
 
   <div id="upuList"></div>
