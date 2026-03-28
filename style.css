@@ -2,39 +2,69 @@ body {
   font-family: Arial;
   background: #f5f7fb;
   margin: 0;
-  padding: 0;
   text-align: center;
 }
 
-h1 {
-  margin: 20px 0;
-}
+.hidden { display: none; }
 
-.hidden {
-  display: none;
-}
-
-/* MAIN PAGE WRAPPER */
 .page {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* BIG FORM CARD */
 .card {
   background: white;
   padding: 25px;
   margin: 20px auto;
-  width: 420px; /* bigger */
+  width: 420px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* INPUTS */
 input, select {
   width: 100%;
   padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 8px 5px;
+  border: none;
+  background: #333;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover { background: #555; }
+
+.circle {
+  border-radius: 50px;
+  background: #e0e0e0;
+  color: black;
+}
+
+.flex {
+  display: flex;
+  gap: 10px;
+}
+
+.subRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.subRow select {
+  flex: 1;
+}
+
+.eligible { color: green; }
+.not-eligible { color: red; }  padding: 10px;
   margin: 8px 0;
   border-radius: 6px;
   border: 1px solid #ccc;
