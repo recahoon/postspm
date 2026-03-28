@@ -9,6 +9,7 @@
 
 <h1>🎓 Tracker</h1>
 
+<!-- HOME -->
 <div id="home">
   <button onclick="showPage('results')">Update Results</button>
   <button onclick="showPage('scholarships')">Scholarships</button>
@@ -35,6 +36,53 @@
     <div id="minBox" class="hidden flexRow">
       <input id="minCount" type="number" placeholder="No.">
       <select id="minGrade">
+        <option>A+</option><option>A</option><option>A-</option>
+      </select>
+    </div>
+
+    <button class="circle" onclick="toggleSub()">Specific Subjects</button>
+    <div id="subBox" class="hidden"></div>
+
+    <input id="docInput" placeholder="Add Document">
+    <button onclick="addDoc()">Add Doc</button>
+    <ul id="docList"></ul>
+
+    <button onclick="addScholarship()">Save</button>
+  </div>
+
+  <div id="scholarshipList"></div>
+  <button onclick="goHome()">Back</button>
+</div>
+
+<!-- UPU -->
+<div id="upu" class="page hidden">
+  <h2>UPU</h2>
+
+  <div class="card">
+    <input id="uName" placeholder="Course Name">
+    <input id="uUni" placeholder="University">
+
+    <button class="circle" onclick="toggleMinUPU()">Minimum</button>
+    <div id="minBoxUPU" class="hidden flexRow">
+      <input id="minCountUPU" type="number" placeholder="No.">
+      <select id="minGradeUPU">
+        <option>A+</option><option>A</option><option>A-</option>
+      </select>
+    </div>
+
+    <button class="circle" onclick="toggleSubUPU()">Specific Subjects</button>
+    <div id="subBoxUPU" class="hidden"></div>
+
+    <button onclick="addUPU()">Save</button>
+  </div>
+
+  <div id="upuList"></div>
+  <button onclick="goHome()">Back</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>      <select id="minGrade">
         <option>A+</option><option>A</option><option>A-</option>
       </select>
     </div>
