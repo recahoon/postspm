@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tracker</title>
+  <title>Scholarship Tracker</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>🎓 Tracker</h1>
+<h1>🎓 Scholarship & UPU Tracker</h1>
 
 <div id="home">
   <button onclick="showPage('results')">Update Results</button>
@@ -18,7 +18,7 @@
 <div id="results" class="page hidden">
   <h2>Results</h2>
   <form id="resultForm"></form>
-  <input type="number" id="coco" placeholder="Cocurriculum">
+  <input type="number" id="coco" placeholder="Cocurriculum Points">
   <button onclick="saveResults()">Save</button>
   <button onclick="goHome()">Back</button>
 </div>
@@ -28,11 +28,11 @@
   <h2>Scholarships</h2>
 
   <div class="card">
-    <input id="sName" placeholder="Name">
+    <input id="sName" placeholder="Scholarship Name">
 
     <button class="circle" onclick="toggleMin()">Minimum</button>
     <div id="minBox" class="hidden flex">
-      <input id="minCount" type="number" placeholder="No.">
+      <input id="minCount" type="number" placeholder="Number">
       <select id="minGrade">
         <option>A+</option><option>A</option><option>A-</option>
       </select>
@@ -41,6 +41,7 @@
     <button class="circle" onclick="toggleSub()">Specific Subjects</button>
     <div id="subBox" class="hidden"></div>
 
+    <h4>Documents Required</h4>
     <input id="docInput" placeholder="Add Document">
     <button onclick="addDoc()">Add</button>
     <ul id="docList"></ul>
@@ -62,7 +63,7 @@
 
     <button class="circle" onclick="toggleMinUPU()">Minimum</button>
     <div id="minBoxUPU" class="hidden flex">
-      <input id="minCountUPU" type="number" placeholder="No.">
+      <input id="minCountUPU" type="number" placeholder="Number">
       <select id="minGradeUPU">
         <option>A+</option><option>A</option><option>A-</option>
       </select>
